@@ -27,7 +27,7 @@ gulp.task('htmlpage', function() {
     .pipe(gulp.dest(htmlDst));
 });
 
-gulp.task('scripts', ['jshint'], function() {
+gulp.task('scripts', ['bower', 'jshint'], function() {
   gulp.src([
         './bower_components/**/*.js',
         '!./bower_components/**/*.min.js',

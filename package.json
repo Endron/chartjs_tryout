@@ -2,7 +2,9 @@
   "name": "chart.js_tryout",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "gulp bower"
+    "postinstall": "gulp bower",
+    "prestart": "npm install",
+    "start": "gulp watch"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
