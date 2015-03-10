@@ -5,6 +5,7 @@ var minifyHTML = require('gulp-minify-html');
 var concat = require('gulp-concat');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
+var connect = require('gulp-connect')
 
 var scriptInput = './src/scripts/**/*.js';
 var htmlInput = './src/**/*.html';
@@ -42,8 +43,14 @@ gulp.task('scripts', ['bower', 'jshint'], function() {
 
 gulp.task('default', ['htmlpage', 'scripts'], function() { });
 
-gulp.task('watch', ['default'], function() {
+gulp.task('serve', ['default'], function() {
   gulp.watch(htmlInput, ['htmlpage']);
 
   gulp.watch(scriptInput, ['scripts']);
+
+  connect.server({
+    root: './build',
+    livereload: true,
+    port: 8000
+  });
 });
