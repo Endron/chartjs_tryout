@@ -26,9 +26,16 @@ gulp.task('htmlpage', function() {
 });
 
 gulp.task('scripts', function() {
-  gulp.src(['./bower_components/**/*.js', '!./bower_components/**/*.min.js', './src/scripts/**/*.js'])
+  gulp.src([
+        './bower_components/**/*.js',
+        '!./bower_components/**/*.min.js',
+        '!./bower_components/**/src/**/*',
+        '!./bower_components/**/gulpfile.js',
+        './src/scripts/**/*.js'])
     .pipe(concat('script.js'))
     .pipe(stripDebug())
     .pipe(uglify())
     .pipe(gulp.dest('./build/scripts/'));
 });
+
+gulp.task('default', ['htmlpage', 'scripts'], function() { });
